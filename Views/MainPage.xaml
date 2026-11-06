@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RastreioEncomendas.Views.MainPage"
+             BackgroundColor="{StaticResource PageBackground}"
+             Title="Rastrear pacote">
+    <ScrollView>
+        <VerticalStackLayout Padding="26,70,26,30" Spacing="22">
+            <Label Text="📦" FontSize="58" HorizontalOptions="Center" />
+            <Label Text="Rastreie sua encomenda"
+                   FontSize="28" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="Acompanhe seu pacote em poucos segundos. Informe o código de rastreamento abaixo."
+                   FontSize="15" TextColor="{StaticResource TextSecondary}"
+                   HorizontalTextAlignment="Center" />
+            <Border Stroke="#E1E6EF" StrokeThickness="1" BackgroundColor="White"
+                    Padding="18" StrokeShape="RoundRectangle 16">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Código de rastreamento" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" />
+                    <Entry Placeholder="Ex.: BR123456789XX"
+                           Text="{Binding TrackingCode}"
+                           ReturnType="Search"
+                           ClearButtonVisibility="WhileEditing"
+                           BackgroundColor="#F6F8FC"
+                           HeightRequest="52" />
+                    <Button Text="Rastrear pacote"
+                            Command="{Binding SearchCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White" CornerRadius="12"
+                            HeightRequest="52" />
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}"
+                                       Color="{StaticResource Primary}" />
+                    <Label Text="{Binding ErrorMessage}" TextColor="#C62828"
+                           FontSize="13" />
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="Você poderá visualizar o status, a previsão de entrega e todas as atualizações do transporte."
+                   FontSize="13" TextColor="{StaticResource TextSecondary}"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
